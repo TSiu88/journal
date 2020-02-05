@@ -1,4 +1,4 @@
-function Entry(title, body){
+export function Entry(title, body){
   this.title = title,
   this.body = body
 }
@@ -9,9 +9,17 @@ Entry.prototype.bodySplit = function(){
   return split;
 }
 
+Entry.prototype.wordSplit = function() {
+  var charecters = this.body.split("");
+  console.log(charecters);
+  return charecters;
+}
+
+
 Entry.prototype.wordCount = function(){
 
-  var words = this.body.bodySplit();
+  var words = this.bodySplit();
+  console.log(words);
 
   return words.length;
 
@@ -25,24 +33,29 @@ Entry.prototype.count = function(){
   }
 
   var vowels = ["a", "e", "i", "o", "u"];
+  var letters = this.wordSplit();
 
-  if (this.body.includes(vowels)) {
+  for ( var i =0; i<letters.length; i++) {
 
-    count.vowelCount++;
 
-  } else {
+    if (vowels.includes(letters[i])) {
 
-    count.consonantCount++;
+      count.vowelCount++;
 
+    } else {
+
+      count.consonantCount++;
+    }
   }
 
+  console.log(count);
   return count;
 
 }
 
 Entry.prototype.getTeaser = function() {
 
-  var words = this.body.bodySplit();
+  var words = this.bodySplit();
 
   return words.splice(0,7);
 
