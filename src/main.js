@@ -13,12 +13,12 @@ $(document).ready(function(){
     var title = $("#titleText").val();
 
     var entry = new Entry(title, text);
-    console.log(text);
-    console.log(title);
 
+    $("#output").append(`<p><strong> ${title}</strong></p>`);
     $("#output").append(`<p> ${entry.getTeaser()} </p>`);
+    $("#output").append(`<p> Word Count: ${entry.wordCount()} </p>`);
     $("#output").append(`<p> Vowels: ${entry.count().vowelCount} </p>`);
-    $("#output").append(`<p> Consonants: ${entry.count().consonantCount} </p>`);
+    $("#output").append(`<p> Consonants: ${entry.count().consonantCount} </p><hr>`);
   });
   
 });
